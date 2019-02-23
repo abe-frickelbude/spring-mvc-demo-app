@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+    <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+
+    <property name="CONSOLE_LOG_PATTERN" value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint}%clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%t]){magenta} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <!-- Pattern without colors -->
+            <!--<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{80} - %X{correlationId} - %m%wex%n</pattern>-->
+        </encoder>
+    </appender>
+
+    <!-- Suppress excessive radio chatter from various loggers -->
+    <logger name="org.springframework.boot.actuate" level="ERROR" />
+    <logger name="org.springframework.orm.jpa.JpaTransactionManager" level="WARN" />
+    <logger name="springfox.documentation" level="ERROR" />
+
+    <root level="info">
+        <appender-ref ref="console" />
+    </root>
+
+</configuration>
