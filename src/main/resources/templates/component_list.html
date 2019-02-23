@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Spring MVC demo - component list</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <style type="text/css">
+        body {
+            padding: 30px;
+        }
+
+        td {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        td.field_name {
+            width: 15em;
+        }
+
+        td.field_value {
+            width: 40em;
+            max-width: 40em;
+        }
+
+        td.field_description {}
+    </style>
+</head>
+
+<body>
+<h1>Component list</h1>
+<div>
+    <table class="table table-sm table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th th:text="#{column.name}"></th>
+            <th th:text="#{column.value}"></th>
+            <th th:text="#{column.description}"></th>
+        </tr>
+        </thead>
+        <!--<tbody>-->
+        <!--<tr th:each="entry:${coreEntries}">-->
+            <!--<td th:text="#{${entry.key}+'.name'}" class="field_name"></td>-->
+            <!--<td th:text="${{entry.value}}" class="field_value"></td>-->
+            <!--<td th:text="#{${entry.key}+'.description'}" class="field_description"></td>-->
+        <!--</tr>-->
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

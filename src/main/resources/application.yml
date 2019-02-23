@@ -5,11 +5,14 @@ spring:
   application:
     name: 'spring-mvc-demo'
 
-  # This can be used instead of custom logback configuration file if you just want to add
-  # ANSI colors to the default console logging configuration
-  # output.ansi.enabled: ALWAYS
+  # This can be used to want to add ANSI colors to console log messages
+  output.ansi.enabled: ALWAYS
+
+  mvc:
+    favicon.enabled: false
 
 server.port: 8080
+
 
 management:
   endpoints:
@@ -22,5 +25,5 @@ management:
 
 # The "logging" block configures the overall logging behavior
 logging:
-  # Use a custom config file for maximum flexibility
+  # A custom config file can be used for maximum flexibility
   config: classpath:logback-dev.xml
