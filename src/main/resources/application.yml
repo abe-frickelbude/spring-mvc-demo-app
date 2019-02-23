@@ -10,16 +10,16 @@ spring:
 
   mvc:
     favicon.enabled: false
+    log-resolved-exception: true
 
 server.port: 8080
-
 
 management:
   endpoints:
     web:
       base-path: /admin
       exposure:
-        include: info
+        include: info,health,mappings,beans
   health:
     db.enabled: true
 
@@ -27,3 +27,4 @@ management:
 logging:
   # A custom config file can be used for maximum flexibility
   config: classpath:logback-dev.xml
+

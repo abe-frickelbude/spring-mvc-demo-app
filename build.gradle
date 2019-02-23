@@ -30,6 +30,10 @@ dependencies {
 
     implementation 'org.webjars:bootstrap:4.3.1'
 
+    // this is used to provide version-agnostic URLs to webjar resources
+    implementation 'org.webjars:webjars-locator:0.36'
+
+    implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'

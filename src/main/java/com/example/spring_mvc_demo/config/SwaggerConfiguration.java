@@ -17,7 +17,6 @@ public class SwaggerConfiguration {
     @Bean
     public Docket serviceApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("api")
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.example.spring_mvc_demo.controller"))
