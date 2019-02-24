@@ -1,7 +1,6 @@
 package com.example.spring_mvc_demo.service.component_generator;
 
 import com.example.spring_mvc_demo.model.ElectronicComponent;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -47,7 +46,7 @@ public class RandomComponentFactoryTest {
             assertNotNull(component);
             assertNotNull(component.getId());
             assertNotNull(component.getDescription());
-            assertNotNull(component.getCreateDate());
+            assertNotNull(component.getCreatedAt());
             assertNotNull(component.getManufacturer());
             log.info(component.toString());
         }

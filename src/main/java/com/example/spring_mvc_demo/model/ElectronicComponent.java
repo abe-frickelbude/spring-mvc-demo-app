@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.time.OffsetDateTime;
@@ -23,7 +24,7 @@ import java.time.ZoneOffset;
  *
  */
 @JsonPropertyOrder({
-    "id", "type", "description", "manufacturer", "createDate"
+    "id", "type", "description", "manufacturer", "createdAt"
 })
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type")
 @JsonSubTypes({
@@ -45,12 +46,14 @@ public abstract class ElectronicComponent {
     @NotBlank
     private String description;
 
+    @Valid
     private Manufacturer manufacturer;
-    private final OffsetDateTime createDate;
+
+    private final OffsetDateTime createdAt;
 
     public ElectronicComponent(final String type) {
         this.type = type;
-        createDate = OffsetDateTime.now(ZoneOffset.UTC);
+        createdAt = OffsetDateTime.now(ZoneOffset.UTC);
     }
 
     public final Long getId() {
@@ -85,8 +88,8 @@ public abstract class ElectronicComponent {
         this.manufacturer = manufacturer;
     }
 
-    public final OffsetDateTime getCreateDate() {
-        return createDate;
+    public final OffsetDateTime getCreatedAt() {
+        return createdAt;
     }
 
     @Override

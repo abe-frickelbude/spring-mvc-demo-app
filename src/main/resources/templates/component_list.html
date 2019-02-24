@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Spring MVC demo - component list</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <style type="text/css">
         body {
-            padding: 30px;
+            padding: 20px;
         }
 
         td {
@@ -14,38 +14,40 @@
             word-wrap: break-word;
         }
 
-        td.field_name {
-            width: 15em;
-        }
-
-        td.field_value {
-            width: 40em;
-            max-width: 40em;
-        }
-
-        td.field_description {}
     </style>
 </head>
 
 <body>
-<h1>Component list</h1>
+<h1>Component catalog</h1>
 <div>
     <table class="table table-sm table-striped">
         <thead class="thead-dark">
         <tr>
-            <th th:text="#{column.name}"></th>
-            <th th:text="#{column.value}"></th>
-            <th th:text="#{column.description}"></th>
+            <!-- The properties defined in messages.properties can be used here directly -->
+            <th th:text="#{list.header.id}"></th>
+            <th th:text="#{list.header.type}"></th>
+            <th th:text="#{list.header.manufacturer}"></th>
+            <th th:text="#{list.header.description}"></th>
+            <th th:text="#{list.header.creation_date}"></th>
         </tr>
         </thead>
-        <!--<tbody>-->
-        <!--<tr th:each="entry:${coreEntries}">-->
-            <!--<td th:text="#{${entry.key}+'.name'}" class="field_name"></td>-->
-            <!--<td th:text="${{entry.value}}" class="field_value"></td>-->
-            <!--<td th:text="#{${entry.key}+'.description'}" class="field_description"></td>-->
-        <!--</tr>-->
+        <tbody>
+        <tr th:each="component : ${componentPage.content}">
+            <td th:text="${component.id}"></td>
+            <td th:text="${component.type}"></td>
+            <td th:text="${component.manufacturer}"></td>
+            <td th:text="${component.description}"></td>
+            <td th:text="${component.createdAt}"></td>
+        </tr>
         </tbody>
     </table>
+    <nav aria-label="navigation">
+        <ul class="pagination justify-content-center">
+            <li th:each="pageNumber:${pageNumbers}" th:class="${pageNumber == componentPage.number + 1} ? 'active' + ' page-item'">
+                <a class="page-link" th:text="${pageNumber}" th:href="@{/catalog/list(page=${pageNumber}, size=${componentPage.size})}"></a>
+            </li>
+        </ul>
+    </nav>
 </div>
 </body>
 </html>

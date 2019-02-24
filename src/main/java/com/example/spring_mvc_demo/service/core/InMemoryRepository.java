@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -71,7 +73,23 @@ public class InMemoryRepository implements ElectronicComponentRepository {
 
     @Override
     public Page<ElectronicComponent> find(final Pageable pageable) {
-        return null;
+
+        int pageSize = pageable.getPageSize();
+        int currentPage = pageable.getPageNumber();
+        int startItem = currentPage * pageSize;
+        List<ElectronicComponent> list;
+
+        if (componentList.size() < startItem) {
+            list = Collections.emptyList();
+        } else {
+            int toIndex = Math.min(startItem + pageSize, componentList.size());
+            list = componentList.subList(startItem, toIndex);
+        }
+
+        Page<ElectronicComponent> bookPage = new PageImpl<>(
+                list, PageRequest.of(currentPage, pageSize), componentList.size());
+
+        return bookPage;
     }
 
     @Override

@@ -13,8 +13,6 @@ public class Resistor extends ElectronicComponent {
     public static final String TYPE = "resistor";
 
     private float value;
-
-    @Min(1)
     private int tolerance;
 
     public Resistor() {

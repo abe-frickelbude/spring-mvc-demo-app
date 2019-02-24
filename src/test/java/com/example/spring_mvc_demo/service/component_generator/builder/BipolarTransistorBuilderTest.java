@@ -75,7 +75,7 @@ public class BipolarTransistorBuilderTest {
         // Hint: we can also use JUnit's assertNotNull() as an alternative to Hamcrest matchers
         // however, the Hamcrest library is generally more flexible and provides many specialized assertions
         // not available in JUnit
-        assertNotNull(transistor.getCreateDate());
+        assertNotNull(transistor.getCreatedAt());
 
         assertThat(transistor.getManufacturer(), is(Manufacturer.TI));
         assertThat(transistor.getDescription(), is("description"));
