@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.util.UUID;
 
 /**
  * Base class for all electronic component representations, provides some common attributes, as well as an common
@@ -35,12 +36,16 @@ import java.util.UUID;
 })
 public abstract class ElectronicComponent {
 
+    @Min(0)
     private Long id;
 
+    @NotBlank
     private final String type;
-    private String description;
-    private Manufacturer manufacturer;
 
+    @NotBlank
+    private String description;
+
+    private Manufacturer manufacturer;
     private final OffsetDateTime createDate;
 
     public ElectronicComponent(final String type) {

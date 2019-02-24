@@ -4,10 +4,10 @@ import com.example.spring_mvc_demo.model.ElectronicComponent;
 import com.example.spring_mvc_demo.service.core.ElectronicComponentRepository;
 import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @RestController flags a controller for additional consideration by Spring MVC, e.g. request handling using
@@ -45,6 +45,22 @@ public class ComponentController {
         final ElectronicComponent component = componentRepository.find(id);
         if (component != null) {
             return ResponseEntity.ok(component);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping
+    public ElectronicComponent save(@Valid @RequestBody final ElectronicComponent component) {
+        return componentRepository.save(component);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") final Long id) {
+
+        if (componentRepository.find(id) != null) {
+            componentRepository.delete(id);
+            return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }

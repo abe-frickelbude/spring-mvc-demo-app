@@ -87,11 +87,16 @@ public class InMemoryRepository implements ElectronicComponentRepository {
             component.setId(idSequence.getAndIncrement());
         }
 
-        if (componentMap.get(component.getId()) == null) {
+        final ElectronicComponent previous = componentMap.get(component.getId());
+        if (previous == null) {
             // add if not already contained in the list
-            componentMap.put(component.getId(), component);
+            componentList.add(component);
+        } else {
+            // update
+            componentList.remove(previous);
             componentList.add(component);
         }
+        componentMap.put(component.getId(), component);
         return component;
     }
 
@@ -100,6 +105,7 @@ public class InMemoryRepository implements ElectronicComponentRepository {
         final ElectronicComponent component = componentMap.get(id);
         if (component != null) {
             componentList.remove(component);
+            componentMap.remove(id);
         }
     }
 }

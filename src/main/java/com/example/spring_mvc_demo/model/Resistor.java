@@ -1,5 +1,7 @@
 package com.example.spring_mvc_demo.model;
 
+import javax.validation.constraints.Min;
+
 /**
  * Resistors. Resistance value unit is [Ohm], tolerance is specified in %.
  * 
@@ -9,7 +11,10 @@ package com.example.spring_mvc_demo.model;
 public class Resistor extends ElectronicComponent {
 
     public static final String TYPE = "resistor";
+
     private float value;
+
+    @Min(1)
     private int tolerance;
 
     public Resistor() {

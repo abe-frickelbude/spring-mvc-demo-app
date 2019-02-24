@@ -1,4 +1,4 @@
-package com.example.spring_mvc_demo.config;
+package com.example.spring_mvc_demo.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -12,11 +12,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgument(final IllegalArgumentException ex) {
-        return ResponseEntity.badRequest().body(ex.getMessage());
-    }
-
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<String> handleValidationError(final MethodArgumentNotValidException ex) {
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
 
