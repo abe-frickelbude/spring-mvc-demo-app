@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
 
-@Api
+@Api(
+        tags = {"Component catalog"}
+)
 @Controller
 @RequestMapping("/catalog")
 public class ComponentCatalogController {

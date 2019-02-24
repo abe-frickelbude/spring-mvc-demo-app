@@ -1,4 +1,3 @@
-
 ### Application configuration #####
 
 spring:
@@ -12,7 +11,10 @@ spring:
     favicon.enabled: false
     log-resolved-exception: true
 
-server.port: 8080
+server:
+  port: 8080
+  error:
+    whitelabel.enabled: false
 
 management:
   endpoints:
@@ -28,3 +30,6 @@ logging:
   # A custom config file can be used for maximum flexibility
   config: classpath:logback-dev.xml
 
+# Application-specific configuration
+component-catalog:
+  num-random-items: 100

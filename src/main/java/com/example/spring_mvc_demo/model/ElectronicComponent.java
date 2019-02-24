@@ -8,6 +8,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.UUID;
 
 /**
@@ -34,7 +35,7 @@ import java.util.UUID;
 })
 public abstract class ElectronicComponent {
 
-    private UUID id;
+    private Long id;
 
     private final String type;
     private String description;
@@ -44,14 +45,14 @@ public abstract class ElectronicComponent {
 
     public ElectronicComponent(final String type) {
         this.type = type;
-        createDate = OffsetDateTime.now();
+        createDate = OffsetDateTime.now(ZoneOffset.UTC);
     }
 
-    public final UUID getId() {
+    public final Long getId() {
         return id;
     }
 
-    public final void setId(final UUID id) {
+    public final void setId(final Long id) {
         this.id = id;
     }
 

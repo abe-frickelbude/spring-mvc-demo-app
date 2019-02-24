@@ -1,18 +1,22 @@
 package com.example.spring_mvc_demo.service.component_generator;
 
-import java.util.*;
-import javax.annotation.*;
-
 import com.example.spring_mvc_demo.model.ElectronicComponent;
 import com.example.spring_mvc_demo.util.RandomValueUtils;
-import org.slf4j.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.context.*;
-import org.springframework.core.*;
-import org.springframework.stereotype.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.ResolvableType;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * A factory class that generates various types of {@linkplain Component} with sequential IDs, but otherwise randomly
+ * A factory class that generates various types of {@linkplain ElectronicComponent} with randomly
  * assigned values.
  *
  * @author Ibragim Kuliev
@@ -49,7 +53,6 @@ public class RandomComponentFactory {
         Class<?> componentClass = RandomValueUtils.pickRandomValue(componentClasses);
         ComponentBuilder<?> builder = builderRegistry.get(componentClass);
         ElectronicComponent component = builder.buildComponent();
-        component.setId(UUID.randomUUID());
         return component;
     }
 
