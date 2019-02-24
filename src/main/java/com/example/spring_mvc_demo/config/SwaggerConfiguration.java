@@ -25,6 +25,6 @@ public class SwaggerConfiguration {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Component catalog API").version("1.0").build();
+        return new ApiInfoBuilder().title("ElectronicComponent catalog API").version("1.0").build();
     }
 }

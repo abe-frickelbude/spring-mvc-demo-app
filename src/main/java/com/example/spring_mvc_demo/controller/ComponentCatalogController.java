@@ -10,7 +10,7 @@ import org.springframework.web.context.request.WebRequest;
 @Api
 @Controller
 @RequestMapping("/catalog")
-public class ComponentListController {
+public class ComponentCatalogController {
 
 
     @GetMapping("/component_list")
