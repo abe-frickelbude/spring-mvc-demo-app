@@ -25,6 +25,6 @@ public class BasicValueFiller {
     }
 
     private <T> String makeRandomDescription(final Class<T> componentClass) {
-        return componentClass.getSimpleName() + "-" + RandomStringUtils.randomAlphanumeric(32);
+        return componentClass.getSimpleName() + "-" + RandomStringUtils.randomAlphanumeric(8);
     }
 }

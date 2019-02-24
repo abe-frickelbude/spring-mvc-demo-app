@@ -20,7 +20,7 @@
 <body>
 <h1>Component catalog</h1>
 <div>
-    <table class="table table-sm table-striped">
+    <table class="table table-sm table-striped table-hover">
         <thead class="thead-dark">
         <tr>
             <!-- The properties defined in messages.properties can be used here directly -->
@@ -36,7 +36,7 @@
             <td th:text="${component.id}"></td>
             <td th:text="${component.type}"></td>
             <td th:text="${component.manufacturer}"></td>
-            <td th:text="${component.description}"></td>
+            <td ><a th:text="${component.description}" th:href="@{/catalog/detail/{id}(id=${component.id})}"></a></td>
             <td th:text="${component.createdAt}"></td>
         </tr>
         </tbody>

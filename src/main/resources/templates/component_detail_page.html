@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Spring MVC demo - component list</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <style type="text/css">
+
+        body {
+            padding: 20px;
+        }
+
+        td {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+    </style>
+</head>
+
+<body>
+<h1>Detailed component information</h1>
+<div>
+    <table class="table table-sm table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th th:text="#{detail.header.key}"></th>
+            <th th:text="#{detail.header.value}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="keyValuePair : ${componentData}">
+            <td th:text="${keyValuePair.key}"></td>
+            <td th:text="${keyValuePair.value}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
