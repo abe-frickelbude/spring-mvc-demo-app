@@ -44,7 +44,6 @@ public class RandomComponentFactoryTest {
         for (int i = 0; i < 10; i++) {
             ElectronicComponent component = componentFactory.makeComponent();
             assertNotNull(component);
-            assertNotNull(component.getId());
             assertNotNull(component.getDescription());
             assertNotNull(component.getCreatedAt());
             assertNotNull(component.getManufacturer());

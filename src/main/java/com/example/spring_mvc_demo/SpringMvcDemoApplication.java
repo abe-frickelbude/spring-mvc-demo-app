@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * The SpringBootApplication annotation does expose several useful parameters for customizing the initialization,
  * but in our simple example we just use the defaults.
  * */
-@SpringBootApplication
+@SpringBootApplication(proxyBeanMethods = false)
 public class SpringMvcDemoApplication {
 
     public static void main(String[] args) {
